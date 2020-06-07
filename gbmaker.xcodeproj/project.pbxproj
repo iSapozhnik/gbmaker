@@ -3,11 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		FF2D1513248D3CB2002BDB6E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D1512248D3CB2002BDB6E /* main.swift */; };
+		FF2D151B248D3CE5002BDB6E /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = FF2D151A248D3CE5002BDB6E /* Files */; };
+		FF2D151E248D3DC3002BDB6E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = FF2D151D248D3DC3002BDB6E /* ArgumentParser */; };
+		FF2D1520248D6DD7002BDB6E /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D151F248D6DD7002BDB6E /* ContentType.swift */; };
+		FF2D1522248D7233002BDB6E /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D1521248D7233002BDB6E /* DateUtility.swift */; };
+		FF2D1524248D75B1002BDB6E /* FolderUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D1523248D75B1002BDB6E /* FolderUtility.swift */; };
+		FF2D1527248D7910002BDB6E /* ColorizeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FF2D1526248D7910002BDB6E /* ColorizeSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +29,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF2D150F248D3CB2002BDB6E /* GatsbyTemplates */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GatsbyTemplates; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2D150F248D3CB2002BDB6E /* gbmaker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gbmaker; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2D1512248D3CB2002BDB6E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FF2D151F248D6DD7002BDB6E /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		FF2D1521248D7233002BDB6E /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		FF2D1523248D75B1002BDB6E /* FolderUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2D151E248D3DC3002BDB6E /* ArgumentParser in Frameworks */,
+				FF2D151B248D3CE5002BDB6E /* Files in Frameworks */,
+				FF2D1527248D7910002BDB6E /* ColorizeSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +61,7 @@
 		FF2D1510248D3CB2002BDB6E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D150F248D3CB2002BDB6E /* GatsbyTemplates */,
+				FF2D150F248D3CB2002BDB6E /* gbmaker */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +70,9 @@
 			isa = PBXGroup;
 			children = (
 				FF2D1512248D3CB2002BDB6E /* main.swift */,
+				FF2D151F248D6DD7002BDB6E /* ContentType.swift */,
+				FF2D1523248D75B1002BDB6E /* FolderUtility.swift */,
+				FF2D1521248D7233002BDB6E /* DateUtility.swift */,
 			);
 			path = GatsbyTemplates;
 			sourceTree = "<group>";
@@ -65,9 +80,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF2D150E248D3CB2002BDB6E /* GatsbyTemplates */ = {
+		FF2D150E248D3CB2002BDB6E /* gbmaker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF2D1516248D3CB2002BDB6E /* Build configuration list for PBXNativeTarget "GatsbyTemplates" */;
+			buildConfigurationList = FF2D1516248D3CB2002BDB6E /* Build configuration list for PBXNativeTarget "gbmaker" */;
 			buildPhases = (
 				FF2D150B248D3CB2002BDB6E /* Sources */,
 				FF2D150C248D3CB2002BDB6E /* Frameworks */,
@@ -77,9 +92,14 @@
 			);
 			dependencies = (
 			);
-			name = GatsbyTemplates;
+			name = gbmaker;
+			packageProductDependencies = (
+				FF2D151A248D3CE5002BDB6E /* Files */,
+				FF2D151D248D3DC3002BDB6E /* ArgumentParser */,
+				FF2D1526248D7910002BDB6E /* ColorizeSwift */,
+			);
 			productName = GatsbyTemplates;
-			productReference = FF2D150F248D3CB2002BDB6E /* GatsbyTemplates */;
+			productReference = FF2D150F248D3CB2002BDB6E /* gbmaker */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF2D150A248D3CB2002BDB6E /* Build configuration list for PBXProject "GatsbyTemplates" */;
+			buildConfigurationList = FF2D150A248D3CB2002BDB6E /* Build configuration list for PBXProject "gbmaker" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -106,11 +126,16 @@
 				Base,
 			);
 			mainGroup = FF2D1506248D3CB2002BDB6E;
+			packageReferences = (
+				FF2D1519248D3CE5002BDB6E /* XCRemoteSwiftPackageReference "Files" */,
+				FF2D151C248D3DC3002BDB6E /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				FF2D1525248D7910002BDB6E /* XCRemoteSwiftPackageReference "ColorizeSwift" */,
+			);
 			productRefGroup = FF2D1510248D3CB2002BDB6E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF2D150E248D3CB2002BDB6E /* GatsbyTemplates */,
+				FF2D150E248D3CB2002BDB6E /* gbmaker */,
 			);
 		};
 /* End PBXProject section */
@@ -121,6 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2D1513248D3CB2002BDB6E /* main.swift in Sources */,
+				FF2D1522248D7233002BDB6E /* DateUtility.swift in Sources */,
+				FF2D1524248D75B1002BDB6E /* FolderUtility.swift in Sources */,
+				FF2D1520248D6DD7002BDB6E /* ContentType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +293,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF2D150A248D3CB2002BDB6E /* Build configuration list for PBXProject "GatsbyTemplates" */ = {
+		FF2D150A248D3CB2002BDB6E /* Build configuration list for PBXProject "gbmaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF2D1514248D3CB2002BDB6E /* Debug */,
@@ -274,7 +302,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF2D1516248D3CB2002BDB6E /* Build configuration list for PBXNativeTarget "GatsbyTemplates" */ = {
+		FF2D1516248D3CB2002BDB6E /* Build configuration list for PBXNativeTarget "gbmaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF2D1517248D3CB2002BDB6E /* Debug */,
@@ -284,6 +312,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF2D1519248D3CE5002BDB6E /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
+		FF2D151C248D3DC3002BDB6E /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		FF2D1525248D7910002BDB6E /* XCRemoteSwiftPackageReference "ColorizeSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mtynior/ColorizeSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF2D151A248D3CE5002BDB6E /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF2D1519248D3CE5002BDB6E /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
+		FF2D151D248D3DC3002BDB6E /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF2D151C248D3DC3002BDB6E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		FF2D1526248D7910002BDB6E /* ColorizeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF2D1525248D7910002BDB6E /* XCRemoteSwiftPackageReference "ColorizeSwift" */;
+			productName = ColorizeSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF2D1507248D3CB2002BDB6E /* Project object */;
 }
