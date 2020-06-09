@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/isapozhnik/work/other/GatsbyTemplates/gbmaker.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

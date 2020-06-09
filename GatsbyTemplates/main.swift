@@ -13,7 +13,7 @@ import ColorizeSwift
 import Cocoa
 
 struct Gbmaker: ParsableCommand {
-    static let configuration = CommandConfiguration(abstract: "Gatsby blog template maker", subcommands: [Make.self])
+    static let configuration = CommandConfiguration(abstract: "Gatsby blog template maker", subcommands: [Make.self, Preview.self])
 }
 
 extension Gbmaker {
@@ -81,7 +81,94 @@ extension Gbmaker {
     }
 }
 
+extension Gbmaker {
+    struct Preview: ParsableCommand {
+        static let configuration = CommandConfiguration(abstract: "Preview command")
+
+        @Option(name: .shortAndLong, help: "The title of the article.")
+        var title: String
+
+        mutating func run() throws {
+            let view = TwitterView(title: title)
+
+            let documentsFolder = Folder.documents
+            let preview = try documentsFolder?.createFile(named: "preview.png")
+            try preview?.write(view.data())
+
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.writeObjects([view.image()])
+        }
+    }
+}
+
 Gbmaker.main()
+
+class TwitterView: View {
+    private let title: String
+
+    init(title: String) {
+        self.title = title
+        super.init(frame: .twitterRect)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setup() {
+        wantsLayer = true
+        backgroundColor = NSColor(calibratedRed: 0.949, green: 0.427, blue: 0.314, alpha: 1.0)
+
+        let previewCaption = NSTextField(labelWithString: "Xcode Tips&Tricks")
+        previewCaption.font = NSFont.monospacedSystemFont(ofSize: 68, weight: .light)
+        previewCaption.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(previewCaption)
+
+        let titleCaption = NSTextField(labelWithString: title)
+        titleCaption.maximumNumberOfLines = 0
+        titleCaption.lineBreakMode = .byWordWrapping
+        titleCaption.font = NSFont.systemFont(ofSize: 138, weight: .bold)
+        titleCaption.translatesAutoresizingMaskIntoConstraints = false
+//        titleCaption.textColor = NSColor(calibratedRed: 0.949, green: 0.427, blue: 0.314, alpha: 1.0)
+        addSubview(titleCaption)
+
+        NSLayoutConstraint.activate([
+            previewCaption.topAnchor.constraint(equalTo: topAnchor, constant: 32),
+            previewCaption.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            titleCaption.topAnchor.constraint(equalTo: previewCaption.bottomAnchor, constant: 32),
+            titleCaption.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            titleCaption.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32)
+
+        ])
+    }
+}
+
+class View: NSView {
+    override var isFlipped: Bool { true }
+    var backgroundColor: NSColor {
+        didSet {
+            layer?.backgroundColor = backgroundColor.cgColor
+        }
+    }
+
+    override init(frame frameRect: NSRect) {
+        backgroundColor = .red
+        super.init(frame: frameRect)
+        layer?.backgroundColor = backgroundColor.cgColor
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension NSRect {
+    static var twitterRect: NSRect {
+        return NSRect(x: 0, y: 0, width: 1280, height: 672)
+    }
+}
 
 extension NSBitmapImageRep {
     var png: Data? { representation(using: .png, properties: [:]) }
@@ -101,4 +188,31 @@ extension NSImage {
     var png: Data? {
         return tiffRepresentation?.bitmap?.png
     }
+}
+
+extension NSView {
+
+    /// Get `NSImage` representation of the view.
+    ///
+    /// - Returns: `NSImage` of view
+
+    func image() -> NSImage {
+        let imageRepresentation = bitmapImageRepForCachingDisplay(in: bounds)!
+        cacheDisplay(in: bounds, to: imageRepresentation)
+        return NSImage(cgImage: imageRepresentation.cgImage!, size: bounds.size)
+    }
+
+    /// Get `Data` representation of the view.
+    ///
+    /// - Parameters:
+    ///   - fileType: The format of file. Defaults to PNG.
+    ///   - properties: A dictionary that contains key-value pairs specifying image properties.
+    /// - Returns: `Data` for image.
+
+    func data(using fileType: NSBitmapImageRep.FileType = .png, properties: [NSBitmapImageRep.PropertyKey : Any] = [:]) -> Data {
+        let imageRepresentation = bitmapImageRepForCachingDisplay(in: bounds)!
+        cacheDisplay(in: bounds, to: imageRepresentation)
+        return imageRepresentation.representation(using: fileType, properties: properties)!
+    }
+
 }
